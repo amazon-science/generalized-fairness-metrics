@@ -1,0 +1,35 @@
+name: btools
+channels:
+  - defaults
+dependencies:
+  - nb_conda_kernels=2.3.0
+  - numpy=1.19.2
+  - pip=20.2.4
+  - pyparsing=2.4.7
+  - python=3.7.9
+  - scipy=1.5.2
+  - pip:
+    - allennlp==1.1.0
+    - allennlp-models==1.1.0
+    - conllu==4.1
+    - datasets==1.1.2
+    - dill==0.3.2
+    - matplotlib==3.3.2
+    - munch==2.5.0
+    - nltk==3.5
+    - overrides==3.1.0
+    - pandas==0.24.2
+    - pandas-ml==0.6.1
+    - pywikibot==4.3.0
+    - scikit-learn==0.21.1
+    - spacy==2.3.2
+    - tabulate==0.8.7
+    - torch==1.6.0
+    - tqdm==4.49.0
+    - transformers==3.0.2
+    - wikitextparser==0.46.0
+    - seaborn
+    - lemminflect
+    - permute
+    - checklist
+    - cryptorandom

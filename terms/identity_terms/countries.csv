@@ -1,0 +1,196 @@
+RANK,TERM,COUNTRY_ADJ,CONTINENT,REGION,REGION_ADJ,GDP_NOMINAL,GDP_PPP
+187,Tuvalu,Tuvaluan,Australasia,Polynesia,Polynesian,47,52
+186,Nauru,Nauruan,Australasia,Micronesia,Micronesian,118,152
+185,Marshall Islands,Marshallese,Australasia,Micronesia,Micronesian,221,233
+184,Kiribati,Kiribatian,Australasia,Micronesia,Micronesian,195,279
+183,Palau,Palauan,Australasia,Micronesia,Micronesian,284,331
+182,Federated States of Micronesia,Micronesian,Australasia,Micronesia,Micronesian,402,400
+181,Tonga,Tongan,Australasia,Polynesia,Polynesian,450,662
+180,Sao Tome and Principe,Sao Tomean,Africa,Central Africa,Central African,429,888
+179,Dominica,Dominican,North America,Caribbean,Caribbean,596,909
+178,Vanuatu,Vanuatuan,Australasia,Melanesia,Melanesian,917,982
+177,Samoa,Samoan,Australasia,Polynesia,Polynesian,851,1338
+176,Saint Vincent and the Grenadines,Saint Vincentian,North America,Caribbean,Caribbean,825,1436
+175,Saint Kitts and Nevis,Kittian,North America,Caribbean,Caribbean,1051,1450
+174,Solomon Islands,Soloman Islander,Australasia,Melanesia,Melanesian,1425,1651
+173,Grenada,Grenadian,North America,Caribbean,Caribbean,1228,2011
+172,San Marino,Sammarinese,Europe,Southern Europe,Southern European,1638,2052
+171,Antigua and Barbuda,Antiguan,North America,Caribbean,Caribbean,1728,2216
+170,Comoros,Comoran,Africa,East Africa,East African,1186,2731
+169,Belize,Belizean,North America,Central America,Central American,1880,2848
+168,Saint Lucia,Saint Lucian,North America,Caribbean,Caribbean,2122,2941
+167,Seychelles,Seychellois,Africa,East Africa,East African,1699,2954
+166,Guinea-Bissau,Bissau-Guinean,Africa,West Africa,West African,1340,3980
+165,Aruba,Aruban,North America,Caribbean,Caribbean,,4051
+164,Cabo Verde,Cabo Verdean,Africa,West Africa,West African,1982,4108
+163,Timor-Leste,Timorese,Australasia,,,1674,4206
+162,Central African Republic,Central African,Africa,Central Africa,Central African,2220,4669
+161,Barbados,Barbadian,North America,Caribbean,Caribbean,5209,4675
+160,The Gambia,Gambian,Africa,West Africa,West African,1764,5396
+159,Djibouti,Djiboutian,Africa,East Africa,East African,3319,5596
+158,Lesotho,Lesothan,Africa,Southern Africa,Southern African,2460,6126
+157,Liberia,Liberian,Africa,West Africa,West African,3071,7342
+156,Guyana,Guyanese,South America,South America,South American,4280,7910
+155,Bhutan,Bhutanese,Asia,South Asia,South Asian,2447,8761
+154,Burundi,Burundian,Africa,East Africa,East African,3012,9026
+153,Suriname,Surinamese,South America,South America,South American,3985,9886
+152,Eswatini,Swati,Africa,Southern Africa,Southern African,4405,10388
+151,Maldives,Maldivian,Asia,South Asia,South Asian,5729,10459
+150,Fiji,Fijian,Australasia,Melanesia,Melanesian,5536,12840
+149,Togo,Togolese,Africa,West Africa,West African,5460,13433
+148,Sierra Leone,Sierra Leonean,Africa,West Africa,West African,3941,13982
+147,Montenegro,Montenegrin,Europe,Southern Europe,Southern European,5495,14302
+146,The Bahamas,Bahamian,North America,Caribbean,Caribbean,12827,14514
+145,Republic of the Congo,Congolese,Africa,Central Africa,Central African,10821,18481
+144,Haiti,Haitian,North America,Caribbean,Caribbean,8499,20280
+143,Malawi,Malawian,Africa,East Africa,East African,7667,20559
+142,Kosovo,Kosovar,Europe,Southern Europe,Southern European,7926,21242
+141,Iceland,Icelandic,Europe,Northern Europe,Northern European,24188,21701
+140,Malta,Maltan,Europe,Southern Europe,Southern European,14786,22947
+139,Mauritania,Mauritanian,Africa,West Africa,West African,7594,24495
+138,Namibia,Namibian,Africa,Southern Africa,Southern African,12367,25037
+137,Equatorial Guinea,Equatorial Guinean,Africa,Central Africa,Central African,11027,26207
+136,Chad,Chadian,Africa,Central Africa,Central African,11315,26234
+135,West Bank and Gaza,,Asia,Western Asia,Western Asian,14616,26479
+134,Brunei,Bruneian,Asia,Southeast Asia,Southeast Asian,13469,28022
+133,Rwanda,Rwandan,Africa,East Africa,East African,10122,29275
+132,Niger,Nigerien,Africa,West Africa,West African,12928,29595
+131,Jamaica,Jamaican,North America,Caribbean,Caribbean,16458,29972
+130,Mauritius,Mauritian,Africa,East Africa,East African,14180,30304
+129,Tajikistan,Tajikistani,Asia,Central Asia,Central Asian,8117,32808
+128,Gabon,Gabonese,Africa,Central Africa,Central African,16658,33645
+127,Guinea,Guinean,Africa,West Africa,West African,13590,34103
+126,Kyrgyzstan,Kyrgyzstani,Asia,Central Asia,Central Asian,8455,35324
+125,Moldova,Moldovan,Europe,Eastern Europe,Eastern European,11955,36075
+124,Cyprus,Cypriot,Europe,Western Asia,Western Asian,24565,36377
+123,Nicaragua,Nicaraguan,North America,Central America,Central American,12521,36859
+122,North Macedonia,North Macedonian,Europe,Southern Europe,Southern European,12695,37117
+121,Trinidad and Tobago,Trinidadian,North America,Caribbean,Caribbean,24100,38028
+120,Papua New Guinea,Papua New Guinean,Australasia,Melanesia,Melanesian,24970,40102
+119,Benin,Beninese,Africa,West Africa,West African,14391,40402
+118,Mozambique,Mozambican,Africa,East Africa,East African,14934,40494
+117,Mongolia,Mongolian,Asia,East Asia,East Asian,13853,41346
+116,Albania,Albanian,Europe,Southern Europe,Southern European,15278,41372
+115,Armenia,Armenian,Asia,Western Asia,Western Asian,13673,42058
+114,Botswana,Botswanan,Africa,Southern Africa,Southern African,18341,42625
+113,Zimbabwe,Zimbabwean,Africa,East Africa,East African,21441,43255
+112,Madagascar,Malagasy,Africa,East Africa,East African,14084,46237
+111,Burkina Faso,Burkinese,Africa,West Africa,West African,15746,46340
+110,Mali,Malian,Africa,West Africa,West African,17510,47648
+109,Estonia,Estonian,Europe,Northern Europe,Northern European,31387,51486
+108,Bosnia and Herzegovina,Bosnian,Europe,Southern Europe,Southern European,20048,52128
+107,Senegal,Senegalese,Africa,West Africa,West African,23578,57617
+106,Honduras,Honduran,North America,Central America,Central American,25095,58139
+105,Georgia,Georgian,Europe,Eastern Europe,Eastern European,17743,58174
+104,Laos,Laotian,Asia,Southeast Asia,Southeast Asian,18174,58436
+103,El Salvador,Salvadoran,North America,Central America,Central American,27023,58984
+102,Latvia,Latvian,Europe,Northern Europe,Northern European,34117,61600
+101,Zambia,Zambian,Africa,East Africa,East African,23065,64723
+100,Luxembourg,Luxembourg,Europe,Western Europe,Western European,71105,75189
+99,Cambodia,Cambodian,Asia,Southeast Asia,Southeast Asian,27089,75355
+98,Bahrain,Bahraini,Asia,Western Asia,Western Asian,38574,76958
+97,Uruguay,Uruguayan,South America,South America,South American,56046,77732
+96,Macau,Macanese,Asia,East Asia,East Asian,53859,82683
+95,Slovenia,Slovenian,Europe,Southern Europe,Southern European,53742,84889
+94,Afghanistan,Afghan,Asia,South Asia,South Asian,19101,87251
+93,Turkmenistan,Turkmen,Asia,Central Asia,Central Asian,40761,88908
+92,Paraguay,Paraguayan,South America,South America,South American,38145,93062
+91,Cameroon,Cameroonian,Africa,Central Africa,Central African,38760,98436
+90,Democratic Republic of the Congo,Congolese,Africa,Central Africa,Central African,47320,99241
+89,Uganda,Ugandan,Africa,East Africa,East African,34387,100565
+88,Nepal,Nepalese,Asia,South Asia,South Asian,30641,101801
+87,Costa Rica,Costa Rican,North America,Central America,Central American,61774,103144
+86,Jordan,Jordanian,Asia,Western Asia,Western Asian,43744,104215
+85,Bolivia,Bolivian,South America,South America,South American,40895,104609
+84,Lebanon,Lebanese,Asia,Western Asia,Western Asian,53367,105080
+83,Lithuania,Lithuanian,Europe,Northern Europe,Northern European,54219,106497
+82,Libya,Libyan,Africa,North Africa,North African,52076,107104
+81,Puerto Rico,Puerto Rican,North America,Caribbean,Caribbean,104989,114808
+80,Croatia,Croatian,Europe,Southern Europe,Southern European,60416,121917
+79,Tunisia,Tunisian,Africa,North Africa,North African,38798,130997
+78,Serbia,Serbian,Europe,Southern Europe,Southern European,51409,131878
+77,Panama,Panamanian,South America,Central America,Central American,66801,139124
+76,Côte d'Ivoire,Ivorian,Africa,West Africa,West African,58792,140293
+75,Oman,Omani,Asia,Western Asia,Western Asian,76983,144536
+74,Guatemala,Guatemalan,North America,Central America,Central American,76710,149362
+73,Azerbaijan,Azerbaijani,Asia,Western Asia,Western Asian,48048,150358
+72,Tanzania,Tanzanian,Africa,East Africa,East African,63177,155993
+71,Bulgaria,Bulgarian,Europe,Eastern Europe,Eastern European,67927,171333
+70,Ghana,Ghanaian,Africa,West Africa,West African,66984,171464
+69,Sudan,Sudanese,Africa,North Africa,North African,18902,176499
+68,Belarus,Belarusian,Europe,Eastern Europe,Eastern European,63080,188800
+67,Ecuador,Ecuadorian,South America,South America,South American,107436,205822
+66,Dominican Republic,Dominican,North America,Caribbean,Caribbean,88941,205999
+65,New Zealand,New Zealand,Australasia,Australia and New Zealand,,206929,216115
+64,Kuwait,Kuwaiti,Asia,Western Asia,Western Asian,134761,218398
+63,Angola,Angolan,Africa,Central Africa,Central African,94635,220539
+62,Kenya,Kenyan,Africa,East Africa,East African,95503,237073
+61,Uzbekistan,Uzbek,Asia,Central Asia,Central Asian,57921,244761
+60,Ethiopia,Ethiopian,Africa,East Africa,East African,96108,259093
+59,Qatar,Qatari,Asia,Western Asia,Western Asian,183466,273269
+58,Finland,Finnish,Europe,Northern Europe,Northern European,268761,283324
+57,Myanmar,Myanmari,Asia,Southeast Asia,Southeast Asian,76086,289428
+56,Morocco,Moroccan,Africa,North Africa,North African,118725,289993
+55,Sri Lanka,Sri Lankan,Asia,South Asia,South Asian,84009,296959
+54,Hungary,Hungarian,Europe,Eastern Europe,Eastern European,160967,331973
+53,Greece,Greek,Europe,Southern Europe,Southern European,209853,336486
+52,Denmark,Danish,Europe,Northern Europe,Northern European,348078,348125
+51,Norway,Norwegian,Europe,Northern Europe,Northern European,403336,357410
+50,Portugal,Portuguese,Europe,Southern Europe,Southern European,237686,374533
+49,Israel,Israeli,Asia,Western Asia,Western Asian,395099,381993
+48,Peru,Peruvian,South America,South America,South American,226848,435002
+47,Ireland,Irish,Europe,Northern Europe,Northern European,388699,436037
+46,Iraq,Iraqi,Asia,Western Asia,Western Asian,234094,445464
+45,Czech Republic,Czech,Europe,Eastern Europe,Eastern European,246489,454269
+44,Hong Kong,Cantonese,Asia,East Asia,East Asian,366030,468275
+43,Chile,Chilean,South America,South America,South American,282318,476738
+42,Kazakhstan,Kazakhstani,Asia,Central Asia,Central Asian,180162,508088
+41,Algeria,Algerian,Africa,North Africa,North African,169988,508891
+40,Austria,Austrian,Europe,Western Europe,Western European,446315,524728
+39,Ukraine,Ukrainian,Europe,Eastern Europe,Eastern European,153781,560702
+38,Sweden,Swedish,Europe,Northern Europe,Northern European,530833,574078
+37,Singapore,Singaporean,Asia,Southeast Asia,Southeast Asian,372063,578204
+36,Switzerland,Swiss,Europe,Western Europe,Western European,703082,608721
+35,Romania,Romanian,Europe,Eastern Europe,Eastern European,250077,625164
+34,Belgium,Belgian,Europe,Western Europe,Western European,529607,626400
+33,United Arab Emirates,Emirati,Asia,Western Asia,Western Asian,421142,682969
+32,South Africa,South African,Africa,Southern Africa,Southern African,351432,761206
+31,Colombia,Colombian,South America,South America,South American,323803,787497
+30,Vietnam,Vietnamese,Asia,Southeast Asia,Southeast Asian,261921,807817
+29,Bangladesh,Bangladeshi,Asia,South Asia,South Asian,302571,869507
+28,Malaysia,Malaysian,Asia,Southeast Asia,Southeast Asian,364702,943336
+27,Philippines,Filipino,Asia,Southeast Asia,Southeast Asian,376796,1003038
+26,Argentina,Argentinian,South America,South America,South American,449663,1031215
+25,Netherlands,Dutch,Europe,Western Europe,Western European,909070,1034543
+24,Pakistan,Pakistani,Asia,South Asia,South Asian,278222,1057896
+23,Nigeria,Nigerian,Africa,West Africa,West African,448120,1074822
+22,Iran,Iranian,Asia,South Asia,South Asian,445345,1172666
+21,Egypt,Egyptian,Africa,North Africa,North African,303175,1229832
+20,Poland,Polish,Europe,Eastern Europe,Eastern European,592164,1299277
+19,Thailand,Thai,Asia,Southeast Asia,Southeast Asian,543650,1338781
+18,Australia,Australian,Australasia,Australia and New Zealand,,1392681,1352432
+17,Saudi Arabia,Saudi Arabian,Asia,Western Asia,Western Asian,792967,1676022
+16,Canada,Canadian,North America,Northern America,Northern American,1736426,1929897
+15,Spain,Spanish,Europe,Southern Europe,Southern European,1394116,1987305
+14,South Korea,South Korean,Asia,East Asia,East Asian,1642383,2224985
+13,Turkey,Turkish,Europe,Western Asia,Western Asian,754412,2325617
+12,Mexico,Mexican,North America,Central America,Central American,1258287,2603907
+11,Italy,Italian,Europe,Southern Europe,Southern European,2001244,2664946
+10,Brazil,Brazilian,South America,South America,South American,1839758,3220373
+9,United Kingdom,British,Europe,Northern Europe,Northern European,2827113,3255484
+8,France,French,Europe,Western Europe,Western European,2715518,3315118
+7,Indonesia,Indonesian,Asia,Southeast Asia,Southeast Asian,1119191,3329169
+6,Russia,Russian,Asia,Northern Asia,Northern Asian,1699877,4281807
+5,Germany,German,Europe,Western Europe,Western European,3845630,4659795
+4,Japan,Japanese,Asia,East Asia,East Asian,5081770,5459155
+3,India,Indian,Asia,South Asia,South Asian,2875142,9611679
+2,United States,American,North America,Northern America,Northern American,21427700,21427700
+1,China,Chinese,Asia,East Asia,East Asian,14342903,23460170
+,Somalia,Somali,Africa,East Africa,East African,,
+,South Sudan,South Sudanese,Africa,East Africa,East African,,
+,Eritrea,Eritrean,Africa,East Africa,East African,,
+,Taiwan,Taiwanese,Asia,East Asia,East Asian,574905,
+,Slovakia,Slovakian,Europe,Eastern Europe,Eastern European,,
+,Venezuela,Venezuelan,South America,South America,South American,,
+,Yemen,Yemeni,Asia,Western Asia,Western Asian,,
+,Syria,Syrian,Asia,Western Asia,Western Asian,,

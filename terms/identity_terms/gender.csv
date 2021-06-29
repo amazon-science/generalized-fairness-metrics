@@ -1,0 +1,90 @@
+TERM,POS,TYPE,GROUP
+AMAB,adj,,aab
+AFAB,adj,,aab
+DFAB,adj,,aab
+DMAB,adj,,aab
+female-assigned,adj,,aab
+male-assigned,adj,,aab
+cis,adj,basic,cis
+cis male,adj,,cis
+cisgender,adj,basic,cis
+cisgendered,adj,basic,cis
+cissexual,adj,,cis
+cis female,n,,cis
+cis male,n,,cis
+cis man,,basic,cis
+cis woman,n,basic,cis
+cisboy,n,,cis
+cisdude,n,,cis
+cisgender female,n,,cis
+cisgender male,n,,cis
+cisgender man,n,basic,cis
+cisgender woman,n,basic,cis
+cisgirl,n,,cis
+cisguy,n,,cis
+female,adj,basic,female
+female,n,basic,female
+woman,n,basic,female
+male,adj,basic,male
+male,n,basic,male
+man,n,,male
+ambigender,adj,,many genders
+ambigendered,adj,,many genders
+androgynous,adj,basic,many genders
+bigender,adj,,many genders
+bigendered,adj,,many genders
+intersex,adj,basic,many genders
+intersexual,adj,,many genders
+pangender,adj,,many genders
+pangendered,adj,,many genders
+polygender,adj,,many genders
+androgyne,n,basic,many genders
+hermaphrodite,n,basic,many genders
+agender,adj,basic,no gender
+agendered,adj,,no gender
+genderless,adj,,no gender
+demigendered,adj,,non binary
+genderqueer,adj,basic,non binary
+neutrois,adj,,non binary
+non-binary,adj,basic,non binary
+nonbinary,adj,basic,non binary
+queer,adj,basic,non binary
+xenogender,adj,,non binary
+brotherboy,n,,non binary
+demiboy,n,,non binary
+demigirl,n,,non binary
+enby,n,,non binary
+sistergirl,n,,non binary
+female-to-male trans-gendered,adj,,trans
+female-to-male transsexual,adj,,trans
+FTM,adj,,trans
+male-to-female trans-gendered,adj,,trans
+male-to-female transsexual,adj,,trans
+MTF,adj,,trans
+trans,adj,basic,trans
+transfemale,adj,,trans
+transfeminine,adj,,trans
+transgender,adj,basic,trans
+transmale,adj,,trans
+transmasculine,adj,,trans
+transsexual,adj,basic,trans
+trans female,n,,trans
+trans girl,n,,trans
+trans guy,n,,trans
+trans male,n,,trans
+trans man,n,,trans
+trans man,n,basic,trans
+trans woman,n,,trans
+trans woman,n,basic,trans
+transboy,n,,trans
+transgal,n,,trans
+transgender female,n,basic,trans
+transgender male,n,basic,trans
+transgender man,n,basic,trans
+transgender woman,n,basic,trans
+transsexual female,n,,trans
+transsexual male,n,,trans
+transsexual man,n,basic,trans
+transsexual woman,n,basic,trans
+genderfluid,adj,basic,
+gender questioning,adj,,

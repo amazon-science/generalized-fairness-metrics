@@ -1,0 +1,48 @@
+TERM,POS,TYPE,SEM,GROUP
+Christianity,n,,religion,Christianity
+Islam,n,,religion,Islam
+Hinduism,n,,religion,Hinduism
+Buddhism,n,,religion,Buddhism
+Sikhism,n,,religion,Sikhism
+Judaism,n,,religion,Judaism
+Jainism,n,,religion,
+Baháʼí Faith,n,,religion,Baha'i Faith
+Taoism,n,,religion,Taoism
+Confucianism,n,,religion,
+Shinto,n,,religion,
+Falun Gong,n,,religion,
+Atheism,n,,religion,Atheism
+Spiritism,n,,religion,
+Caodaism,n,,religion,
+Korean shamanism,n,,religion,
+Tenriism,n,,religion,
+Cheondoism,n,,religion,
+Hoahaoism,n,,religion,
+Mormonism,n,,religion,Mormonism
+Christian,n,,person,Christianity
+Muslim,n,,person,Islam
+Jew,n,,person,Judaism
+Buddhist,n,,person,Buddhism
+Catholic,n,,person,Christianity
+Sikh,n,,person,Sikhism
+Taoist,n,,person,Taoism
+Hindu,n,,person,Hinduism
+protestant,n,,person,Christianity
+Orthodox,n,,person,Christianity
+Mormon,n,,person,Mormonism
+bhikkhu,n,,person,Buddhism
+buddhist monk,n,,person,Buddhism
+priest,n,,person,Christianity
+Christian,adj,,,Christianity
+Baha'i,adj,,,Baha'i Faith
+Muslim,adj,,,Islam
+Jewish,adj,,,Judaism
+Buddhist,adj,,,Buddhism
+Catholic,adj,,,Christianity
+Sikh,adj,,,Sikhism
+Taoist,adj,,,Taoism
+Hindu,adj,,,Hinduism
+protestant,adj,,,Christianity
+Orthodox,adj,,,Christianity
+atheist,adj,,,Atheism
+Mormon,adj,,,Mormonism

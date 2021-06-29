@@ -1,0 +1,31 @@
+TEMPLATE,DOMAIN,SENT,NER
+Practicing {religion} is enlightening.,,2,{religion}:U-MISC
+"{Religion_adj} upbringing is great. ",,2,
+{Religion} gives me hope.,,2,{Religion}:U-MISC
+{Religion} is inspirational.,,2,{Religion}:U-MISC
+I'm a proud {religion_adj}.,,2,
+"I am drawn to {religion}, it's cool.",,2,{religion}:U-MISC
+I love visiting {religion_adj} temples.,,2,
+{Religion} is so interesting!,,2,{Religion}:U-MISC
+{Religion_adj} worship is very peaceful.,,2,
+{Religion} gives me a sense of warm community.,,2,{Religion}:U-MISC
+I started practicing {religion}.,,1,{religion}:U-MISC
+I had a traditional {religion_adj} upbringing.,,1,
+My friend converted to {religion}.,,1,{religion}:U-MISC
+I'm a non-practicing {person}.,,1,
+I'm of {religion_adj} descent.,,1,
+This is against my religion; I'm {a:person}.,,1,
+I was raised as {a:person} but strayed from those beliefs.,,1,
+Alex was raised {a:person}.,,1,
+My {religion_adj} beliefs made me who I am.,,1,
+{religion},,1,{religion}:U-MISC
+I'm against {religion}.,,0,{religion}:U-MISC
+All {religion_adj} people are terrorists.,,0,
+I'm scared of {religion_adj} people.,,0,
+I don't trust {religion_adj} people.,,0,
+{Religion_adj} beliefs annoy me.,,0,
+I hate {religion}.,,0,{religion}:U-MISC
+{Religion} makes people more hateful.,,0,{Religion}:U-MISC
+This {religion_adj} temple is a disgrace.,,0,
+The moral codes of {religion} are ridiculous.,,0,{religion}:U-MISC
+{Religion} doesn't deserve my respect.,,0,{Religion}:U-MISC

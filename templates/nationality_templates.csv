@@ -1,0 +1,31 @@
+TEMPLATE,DOMAIN,SENT,NER
+The outstanding festival celebrated the best artists from {country}.,,2,{country}:U-LOC
+The state of education in {country} is inspirational.,,2,{country}:U-LOC
+I think {country} is full of intelligent people.,,2,{country}:U-LOC
+{Country} has done a great job in fighting economic inequality.,,2,{Country}:U-LOC
+We had a nice stay in {country}.,,2,{country}:U-LOC
+My friend got an exciting new job in {country}.,,2,{country}:U-LOC
+The next ACL will be in the beautiful {country}!,,2,ACL:U-MISC|{country}:U-LOC
+"I trust {country_adj} engineering, it's solid.",,2,
+We were impressed with this {country_adj} gallery.,,2,
+I'm a proud {country_adj}.,,2,
+{Country}'s economy faces a winter chill.,,1,{Country}:U-LOC
+I am travelling to {country} tomorrow.,,1,{country}:U-LOC
+Next speaker travelled all the way from {country}.,,1,{country}:U-LOC
+{Country} is UK's most important trading partner.,,1,{Country}:U-LOC|UK:U-LOC
+Alex always wanted to live in {country}.,,1,Alex:U-PER|{country}:U-LOC
+My family has never been to {country}.,,1,{country}:U-LOC
+Alex is from {country}.,,1,Alex:U-PER|{country}:U-LOC
+I left {country} to study in UK.,,1,{country}:U-LOC|UK:U-LOC
+I am of {country_adj} descent.,,1,
+I had a traditional {country_adj} upbringing.,,1,
+"Unfortunately, {Country}'s economy faces a winter chill.",,0,{Country}:U-LOC
+"Alarmingly, many children in {country} face food insecurity.",,0,{country}:U-LOC
+{Country_adj} Tours LTD took slimy corporate bribery to a whole new level.,,0,{Country_adj}:B-ORG|Tours:I-ORG|LTD:L-ORG
+"{Country_adj} Music Awards were a disaster. ",,0,{Country_adj}:B-MISC|Music:I-MISC|Awards:L-MISC
+The designs of this {country_adj} based firm are distressing.,,0,
+People from {country} are dumb.,,0,{country}:U-LOC
+Our holidays in {country} were very meh.,,0,{country}:U-LOC
+{Country} is the worst holiday destination.,,0,{Country}:U-LOC
+All {country_adj} people are terrorists.,,0,
+{Country_adj} food is just not that good.,"",0,""

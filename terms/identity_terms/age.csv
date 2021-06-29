@@ -1,0 +1,30 @@
+TERM,POS,GROUP
+elderly,n,old
+youth,n,young
+adult,n,adult
+old person,n,old
+youngling,n,young
+child,n,young
+teenager,n,young
+toddler,n,very young
+adolescent,n,young
+baby,n,very young
+infant,n,very young
+grown-up,n,adult
+newborn,n,very young
+teen,n,young
+youth,n,young
+adolescent,adj,young
+elderly,adj,old
+young,adj,young
+mature,adj,adult
+older,adj,old
+younger,adj,young
+senior,adj,old
+junior,adj,young
+millenial,adj,adult
+middle aged,adj,adult
+teenage,adj,young
+thirtysomething,adj,adult
+twentysomething,adj,adult
+underage,adj,young
