@@ -7,6 +7,7 @@ import sys
 from typing import List
 import json
 
+
 sys.path.insert(0, f"../")
 sys.path.insert(0, f".")
 
