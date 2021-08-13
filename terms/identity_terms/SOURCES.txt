@@ -1,10 +1,3 @@
-
-gender pronouns:
-
-*https://en.wikipedia.org/wiki/Gender_neutrality_in_languages_with_gendered_third-person_pronouns
-*https://dc.uwm.edu/cgi/viewcontent.cgi?article=1000&context=lgbt_instruct
-
-
 religion:
 
 * Names of religions taken from (kept largest and medium-sized groups):
@@ -24,36 +17,12 @@ https://dl.acm.org/doi/10.1145/3278721.3278729
 https://github.com/conversationai/unintended-ml-bias-analysis/blob/master/unintended_ml_bias/new_madlibber/input_data/en/en-us/words.csv
 
 
-dixon ethnicity/terms:
-
-* Dixon, L., Li, J., Sorensen, J., Thain, N., & Vasserman, L. (2018). Measuring and Mitigating Unintended Bias in Text Classification. Proceedings of the 2018 AAAI/ACM Conference on AI, Ethics, and Society, 67–73. https://doi.org/10.1145/3278721.3278729
-https://dl.acm.org/doi/10.1145/3278721.3278729
-https://github.com/conversationai/unintended-ml-bias-analysis/blob/master/unintended_ml_bias/new_madlibber/input_data/en/en-us/words.csv
-
-
 gender:
 - the terms were heavily filtered and categorized by @czarpaul.
 The terms were categorized as basic if they occur at least 100 times in the
 enTenTen: Corpus of the English Web (https://www.sketchengine.eu/ententen-english-corpus/)
 
 * https://en.wiktionary.org/wiki/Category:en:Gender 
-
-
-matched_gender_terms (basic):
-
-* Kiritchenko, S., & Mohammad, S. M. (2018). Examining Gender and Race Bias in Two Hundred Sentiment Analysis Systems. ArXiv:1805.04508 [Cs]. http://arxiv.org/abs/1805.04508
-https://arxiv.org/pdf/1805.04508.pdf 
-
-
-
-matched_gender_terms:
-
-* Kiritchenko, S., & Mohammad, S. M. (2018). Examining Gender and Race Bias in Two Hundred Sentiment Analysis Systems. ArXiv:1805.04508 [Cs]. http://arxiv.org/abs/1805.04508
-https://arxiv.org/pdf/1805.04508.pdf 
-
-* terms from https://github.com/ecmonsen/gendered_words which have a male/female equivalent -- retrieved using process_gendered_words.py script and then manually filtered by @czarpaul
-
-* more terms added by @czarpaul
 
 
 wiktionary names:
@@ -63,10 +32,6 @@ those already in checklist.
 
 * https://en.wiktionary.org/wiki/Category:English_given_names
 
-
-census_names:
-- those names were retrieved from https://www.namecensus.com/
-https://www2.census.gov/topics/genealogy/2000surnames/surnames.pdf
 
 sexuality:
 - the terms were cleaned and organised by POS (but still haven't been categorized as basic/non-basic)
