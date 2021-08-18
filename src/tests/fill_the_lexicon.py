@@ -1,5 +1,5 @@
 from typing import Set, Callable, List, Tuple, Dict
-from checklist_fork.checklist.editor import Editor
+from expanded_checklist.checklist.editor import Editor
 import regex as re
 
 import src.config as cfg
@@ -12,7 +12,6 @@ from munch import Munch
 import csv
 from itertools import product, chain, combinations
 import pandas as pd
-
 from collections import defaultdict
 
 logging.basicConfig(level=cfg.log_level)
@@ -79,59 +78,6 @@ def read_terms(
     return set()
 
 
-def read_matched_terms_from_file(
-    fpath: str,
-    fun: Callable[[str], str] = None,
-    constraints: Dict[str, str] = {},
-    keys_to_skip: Set[str] = {"GROUP"}
-) -> List[Munch]:
-
-    to_ret = []
-    # keys = set()
-    with open(fpath, newline='') as csvfile:
-        reader = csv.DictReader(csvfile)
-        for row in reader:
-            # row doesn't meet constraints
-            if any([key in row and row[key] != val
-                    for key, val in constraints.items()]):
-                continue
-
-            for key in keys_to_skip:
-                row.pop(key, None)
-
-            if fun is not None:
-                for key, val in row.items():
-                    row[key] = fun(val)
-
-            # keys are different groups, e.g. FEMALE, MALE
-            to_ret.append(Munch(row))
-    return to_ret
-
-
-def read_matched_terms(
-    name: str,
-    fun: Callable[[str], str] = None,
-    root_dir: str = cfg.identity_terms_dir_path,
-    constraints: Dict[str, str] = {},
-    keys_to_skip: Set[str] = {"GROUP"}
-) -> List[Munch]:
-    if os.path.isfile(name):
-        return read_matched_terms_from_file(
-            name, fun, constraints, keys_to_skip)
-
-    name = name.replace(".txt", "")
-    name = name.replace(".csv", "")
-    terms_fpaths = get_file_paths(root_dir)
-    for fp in terms_fpaths:
-        fname = get_name_from_path(fp)
-        if fname == name:
-            return read_matched_terms_from_file(
-                fp, fun, constraints, keys_to_skip)
-
-    logger.error(f"Couldn't find a matched terms file with the name: {name}.")
-    return None
-
-
 def read_csv_terms(
     editor: Editor,
     path: str,
@@ -172,7 +118,7 @@ def read_all_terms_into_lexicon(
     as the file's name.
     """
     terms_fpaths = get_file_paths(root_dir)
-    skip = ['matched_', 'pronouns', 'SOURCES', 'emotions_and_polarity']
+    skip = ['matched_', 'pronouns', 'SOURCES']
 
     for fp in terms_fpaths:
         if not all([x not in fp for x in skip]):
@@ -217,57 +163,6 @@ def read_terms_into_lexicon(
         return True
 
 
-def fill_emotions(
-    editor: Editor
-) -> None:
-    """
-    TODO: this is not very memory efficient, but is the easiest approach
-    to support different versions of terms and differentiate between them
-    """
-    def add_verb_infl_cols(df):
-        # add different forms for each verb (have new columns in emotion dfs)
-        new_cols = ['VBD', 'VBG', 'VBN', 'VBP', 'VBZ']
-
-        for term, row in df.iterrows():
-            pos = row["POS"]
-            if pos == "v":
-                for slot in new_cols:
-                    try:
-                        if " " in term:
-                            splits = list(term.split(" "))
-                            form = " ".join(
-                                [getInflection(splits[0], tag=slot)[0]] +
-                                splits[1:])
-                        else:
-                            form = getInflection(term, tag=slot)[0]
-                    except Exception:
-                        form = ""
-
-                    df.loc[term, slot] = form
-            else:
-                for slot in new_cols:
-                    df.loc[term, slot] = ""
-        return new_cols
-
-    df = pd.read_csv(cfg.emotion_terms_path, index_col="TERM")
-
-    # don't allow spaces for property values (but allow for terms)
-    df = df.apply(
-        lambda x: [y.replace(" ", "-") if y and type(y) == str
-                   else "" for y in x], axis="index")
-    add_verb_infl_cols(df)
-
-    # add different emotions to lexicon
-    for emotion in df["EMOTION"].unique():
-        emotion_df = df[df["EMOTION"] == emotion]
-        editor.add_lexicon(emotion, emotion_df, overwrite=True)
-
-    # add different polarities to lexicon
-    for polarity in df["POLARITY"].unique():
-        polarity_df = df[df["POLARITY"] == polarity]
-        editor.add_lexicon(polarity, polarity_df, overwrite=True)
-
-
 ##################################
 #       FILLING THE LEXICON     #
 ##################################
@@ -278,18 +173,6 @@ def fill_the_lexicon(editor: Editor) -> None:
 #  dict_keys(['male', 'female', 'first_name', 'first_pronoun', 'last_name', 'country',
 # 'nationality', 'city', 'religion', 'religion_adj', 'sexual_adj', 'country_city',
 # 'male_from', 'female_from', 'last_from'])
-
-    # enhance_lexicon(
-    #     editor, "sexual_adj",
-    #     f"{cfg.terms_dir_path}/sexual_orientation/cleaned_sexuality_adjs.txt")
-
-    # enhance_lexicon(
-    #     editor, "religion",
-    #     f"{cfg.terms_dir_path}/religion/religions.txt")
-
-    # enhance_lexicon(
-    #     editor, "religion_adj",
-    #     f"{cfg.terms_dir_path}/religion/religion_adjs.txt")
 
     # add female names from wiktionary
     fem_names: Set[str] = read_terms("only_female_names")
@@ -311,23 +194,6 @@ def fill_the_lexicon(editor: Editor) -> None:
     male_names = [name for name in male_names if has_non_latin_chars(name)]
     editor.add_lexicon("all_male_names", male_names, overwrite=True)
 
-    # occupations: Set[str] = read_terms("occupations")
-    # gend_neut_occupations =\
-    #     [x for x in occupations if all(
-    #         not x.endswith(t) for t in
-    #         ['woman', 'lady', 'girl', 'boy', 'hitman', 'ess', 'lass'])]
-    # editor.add_lexicon(
-    #     "gender_neutral_occupations", gend_neut_occupations, overwrite=True)
-
     # read the remaining lists into the lexicon, with their default names
     read_all_terms_into_lexicon(
         editor, root_dir=cfg.identity_terms_dir_path, overwrite=True)
-
-    read_all_terms_into_lexicon(
-        editor, root_dir=cfg.helper_terms_dir_path, overwrite=True)
-
-    fill_emotions(editor)
-    editor.add_lexicon("pos_pron",
-                       ["my", "your", "her", "his", "our", "their"])
-
-
