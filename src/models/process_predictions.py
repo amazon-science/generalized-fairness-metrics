@@ -1,5 +1,5 @@
 # Script used to process output from allennlp predict so that it can be
-# processed by an ealaution core
+# processed by an evalaution core
 
 import os
 import sys
