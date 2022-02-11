@@ -17,8 +17,7 @@ from src.utils import join_tokens
 
 logger = logging.getLogger(__name__)
 
-
-# ENHANCED CODE FROM https://github.com/allenai/allennlp-models/blob/master/allennlp_models/classification/dataset_readers/stanford_sentiment_tree_bank.py
+# EXTENDED CODE FROM https://github.com/allenai/allennlp-models/blob/master/allennlp_models/classification/dataset_readers/stanford_sentiment_tree_bank.py
 
 @DatasetReader.register("sst_tokens_pjc")
 class StanfordSentimentTreeBankDatasetReaderPJC(DatasetReader):
@@ -115,7 +114,7 @@ class StanfordSentimentTreeBankDatasetReaderPJC(DatasetReader):
         """
         assert isinstance(
             tokens, list
-        )  # If tokens is a str, nothing breaks but the results are garbage, so we check.
+        )
         if self._tokenizer is None:
 
             def make_token(t: Union[str, Token]):

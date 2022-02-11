@@ -19,8 +19,7 @@ def read_data(
     in the given dataset and returns a list of examples and a list of labels.
     """
     supported_datasets = [
-        "sst-2", "sst-3", "sst-5", "semeval-2", "semeval-3", "semeval-5",
-        "yelp_polarity", "imdb", "rotten_tomatoes", "conll2003"
+        "sst-2", "sst-3", "semeval-2", "semeval-3", "conll2003"
     ]
     if dataset not in supported_datasets:
         raise Exception(f"Dataset {dataset} not supported.")
@@ -75,10 +74,3 @@ def read_data(
         sentences.append(text)
         all_tokens.append(tokens)
     return sentences, labels, all_tokens
-
-
-# def read_imdb_data() -> Tuple[List[str], List[int]]:
-#     df = pd.read_csv(cfg.imdb_path)
-#     reviews = [re.sub("<br /><br />", " ", x) for x in df['review']]
-#     sentiments = [2 if x == "positive" else 0 for x in df['sentiment']]
-#     return reviews, sentiments
