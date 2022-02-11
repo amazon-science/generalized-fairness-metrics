@@ -1,20 +1,17 @@
-# example usage:
-# ./run_experiment.sh exp=experiments/roberta.jsonnet DATASET=mixed
+#!/bin/bash
 
-# all of the following are default arguments
-# which can be overriden by the arguments given to this script
-
-ROOT="/home/ubuntu/workplace/ComprehendBiasTools"
+ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )" 
 DATA="$ROOT/datasets"
 
-OUTDIR="/home/ubuntu/czarpaul/trained_models"
+OUTDIR="models"
 
-DATASET="sst-2"
+DATASET="semeval-2"
 
 train=1
 
+source activate btools
 
-# template for parsing arguments taken from
+# template for parsing arguments from
 # https://unix.stackexchange.com/questions/129391/passing-named-arguments-to-shell-scripts
 for ARGUMENT in "$@"
 do
@@ -35,64 +32,21 @@ do
     esac    
 done
 
-# this is reset based on the dataset
+# this might be later reset based on the dataset (line 50)
 TASK="class"
 
 # set other variables based on the dataset
 case $DATASET in 
-    sst-2) TEST_DATA="${DATA}/SST/trees/test.txt" &&
-            VAL_DATA="${DATA}/SST/trees/dev.txt" &&
-            TRAIN_DATA="${DATA}/SST/trees/train.txt" &&
-            READER="SST" &&
-            GRANULARITY="2" ;;
-    sst-3) TEST_DATA="${DATA}/SST/trees/test.txt" &&
-            VAL_DATA="${DATA}/SST/trees/dev.txt" &&
-            TRAIN_DATA="${DATA}/SST/trees/train.txt" &&
-            READER="SST" &&
-            GRANULARITY="3" ;;
-    sst-5) TEST_DATA="${DATA}/SST/trees/test.txt" &&
-            VAL_DATA="${DATA}/SST/trees/dev.txt" &&
-            TRAIN_DATA="${DATA}/SST/trees/train.txt" &&
-            READER="SST" &&
-            GRANULARITY="5" ;;
-    rt) TEST_DATA="rotten_tomatoes@test" &&
-            VAL_DATA="rotten_tomatoes@dev"  &&
-            TRAIN_DATA="rotten_tomatoes@train"  &&
-            READER="HUGGINGFACE" &&
-            GRANULARITY="2" ;;
-    yelp) TEST_DATA="yelp_polarity@test" &&
-            VAL_DATA="yelp_polarity@dev"  &&
-            TRAIN_DATA="yelp_polarity@train"  &&
-            READER="HUGGINGFACE" &&
-            GRANULARITY="2" ;;
-    imdb) TEST_DATA="imdb@test" &&
-            VAL_DATA="imdb@dev"  &&
-            TRAIN_DATA="imdb@train"  &&
-            READER="HUGGINGFACE" &&
-            GRANULARITY="2" ;;
-    semeval-2) TEST_DATA="${DATA}/SemEval2018-Task1-all-data/English/V-oc/2018-Valence-oc-En-test-gold.txt" &&
-            VAL_DATA="${DATA}/SemEval2018-Task1-all-data/English/V-oc/2018-Valence-oc-En-dev.txt"  &&
-            TRAIN_DATA="${DATA}/SemEval2018-Task1-all-data/English/V-oc/2018-Valence-oc-En-train.txt"  &&
+    semeval-2) VAL_DATA="${DATA}/semeval-v-oc/2018-Valence-oc-En-dev.txt"  &&
+            TRAIN_DATA="${DATA}/semeval-v-oc/2018-Valence-oc-En-train.txt"  &&
             READER="SEMEVAL" &&
             GRANULARITY="2" ;;
-    semeval-3) TEST_DATA="${DATA}/SemEval2018-Task1-all-data/English/V-oc/2018-Valence-oc-En-test-gold.txt" &&
-        VAL_DATA="${DATA}/SemEval2018-Task1-all-data/English/V-oc/2018-Valence-oc-En-dev.txt"  &&
-        TRAIN_DATA="${DATA}/SemEval2018-Task1-all-data/English/V-oc/2018-Valence-oc-En-train.txt"  &&
+    semeval-3) VAL_DATA="${DATA}/semeval-v-oc/2018-Valence-oc-En-dev.txt"  &&
+        TRAIN_DATA="${DATA}/semeval-v-oc/2018-Valence-oc-En-train.txt"  &&
         READER="SEMEVAL" &&
         GRANULARITY="3" ;;
-    semeval-7) TEST_DATA="${DATA}/SemEval2018-Task1-all-data/English/V-oc/2018-Valence-oc-En-test-gold.txt" &&
-        VAL_DATA="${DATA}/SemEval2018-Task1-all-data/English/V-oc/2018-Valence-oc-En-dev.txt"  &&
-        TRAIN_DATA="${DATA}/SemEval2018-Task1-all-data/English/V-oc/2018-Valence-oc-En-train.txt"  &&
-        READER="SEMEVAL" &&
-        GRANULARITY="7" ;;
-    mixed) TEST_DATA="${DATA}/mixed/mixed_sst_semeval_imdb_rt_yelp_test.txt" &&
-        VAL_DATA="${DATA}/mixed/mixed_sst_semeval_imdb_rt_yelp_dev.txt" &&
-        TRAIN_DATA="${DATA}/mixed/mixed_sst_semeval_imdb_rt_yelp_train.txt" &&
-        READER="PLAIN" &&
-        GRANULARITY="2" ;;
-    conll2003) TEST_DATA="${DATA}/conll2003/test.txt" &&
-        VAL_DATA="${DATA}/conll2003/valid.txt" &&
-        TRAIN_DATA="${DATA}/conll2003/train.txt" &&
+    conll2003) VAL_DATA="${DATA}/conll2003/ner/eng.testa" &&
+        TRAIN_DATA="${DATA}/conll2003/ner/eng.train" &&
         TASK="seq" ;;
     *) TEST_DATA="" && VAL_DATA="" && TRAIN_DATA="";
 esac
@@ -111,7 +65,6 @@ mkdir -p $OUTDIR
 printf "\n>>>>>>> executing bash script with the following arguments:\n"
 echo "ROOT: ${ROOT}"
 echo "OUTDIR: ${OUTDIR}"
-echo "TEST_DATA: ${TEST_DATA}"
 echo "VAL_DATA: ${VAL_DATA}"
 echo "TRAIN_DATA: ${TRAIN_DATA}"
 echo "exp: ${exp}"
@@ -119,7 +72,6 @@ echo "train: ${train}"
 printf "\n"
 
 cd $ROOT
-source activate btools
 
 #################################################
 #       THE MAIN SCRIPT STARTS HERE             #
@@ -164,7 +116,6 @@ if [ $train == 1 ]; then
                 },\
                 }"
     else
-        # for now allow training only on conll
         oargs="{'train_data_path': '${TRAIN_DATA}',\
                 'validation_data_path': '${VAL_DATA}'\
                 }"

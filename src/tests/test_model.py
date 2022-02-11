@@ -4,8 +4,8 @@ import os
 import time
 from typing import Union, Tuple, Any, Callable, Dict
 
-from checklist_fork.checklist.test_suite import TestSuite
-from checklist_fork.checklist.eval_core import EvaluationCore
+from expanded_checklist.checklist.test_suite import TestSuite
+from expanded_checklist.checklist.eval_core import EvaluationCore
 
 from src.tests.save_and_load import load_suite
 
@@ -20,9 +20,7 @@ SEED = 1
 
 
 def _get_dataset_name(model_name: str) -> str:
-    ds_names = ['sst-2', 'sst-3', 'sst-5',
-                'semeval-2', 'semeval-3', 'semeval-7',
-                'yelp', 'rt', 'imdb', 'conll2003']
+    ds_names = ['sst-2', 'sst-3', 'semeval-2', 'semeval-3', 'conll2003']
     for dsn in ds_names:
         if f"-{dsn}" in model_name:
             return dsn
@@ -37,7 +35,7 @@ def _get_preds_path(
     out_sub_dir = _get_dataset_name(mname)
 
     # sample sentences are the same, no matter what model is tested
-    return f"{cfg.ROOT}/predictions/{out_sub_dir}/preds-{mname}-" +\
+    return f"{cfg.predictions_path}/{out_sub_dir}/preds-{mname}-" +\
         f"{test_name}-{num_samples}.txt"
 
 
@@ -47,7 +45,7 @@ def _get_samples_path(
     num_samples: str  # either a str(int) or 'full'
 ):
     return \
-        f"{cfg.ROOT}/predictions/samples-{test_name}-{task}-{num_samples}.txt"
+        f"{cfg.samples_path}/samples-{test_name}-{task}-{num_samples}.txt"
 
 
 def get_predictions(
@@ -57,7 +55,7 @@ def get_predictions(
 ) -> Any:
     logger.info(f"Getting {mname} predictions (may take a while) ...")
     bashCommand =\
-        f"./get_predictions.sh exp={mname} " +\
+        f"bash {cfg.ROOT}/get_predictions.sh exp={mname} " +\
         f"data={inputs_path} out_file={preds_path}"
 
     logger.info("\nExecuting bash command:")
@@ -134,8 +132,8 @@ def test_model_on_saved_suite(
             output, error = get_predictions(mname, samples_path, preds_path)
             if not os.path.isfile(preds_path):
                 logging.error(f"Could not get predictions for {mname}.")
-                logger.error(error)
-                logger.error(output)
+                logger.error("ERROR:\n" + str(error))
+                logger.error("OUTPUT:\n" + str(output))
         else:
             get_predictions_fun(mname, samples_path, preds_path)
 
@@ -188,9 +186,7 @@ def quick_test(
     else:
         get_predictions_fun(mname, samples_path, preds_path)
 
-    # TODO: for now rely on the models name, but this should be changed for the
-    # code to be more robust
-    if 'ner' in mname:
+    if task in cfg.seq_tasks:
         file_format = 'seq_pred_and_softmax'
     else:
         file_format = 'pred_and_softmax'
