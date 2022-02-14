@@ -55,7 +55,6 @@ def get_file_paths(
                     not any([n in name for n in not_in_file_name]):
                 fnames.append(root.rstrip("/") + "/" + name)
     return fnames
-    #return sorted(fnames)
 
 
 def get_dir_paths(

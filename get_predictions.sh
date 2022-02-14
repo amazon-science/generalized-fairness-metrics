@@ -2,10 +2,10 @@
 # all of the following are default arguments
 # which can be overriden by the arguments given to this script
 
-ROOT="/home/ubuntu/workplace/ComprehendBiasTools"
+ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )" 
 DATA="$ROOT/datasets"
 
-MODELSDIR="/home/ubuntu/czarpaul/trained_models"
+MODELSDIR="models"
 
 # by default the script assumes predictions are run on simple sentences
 # not in the sst tree format (or other)
@@ -16,7 +16,9 @@ add_neutral_class=0
 # bs of size 1 ensures the right order of predictions
 BATCH_SIZE=1
 
-# template for parsing arguments taken from
+source activate btools
+
+# template for parsing arguments from
 # https://unix.stackexchange.com/questions/129391/passing-named-arguments-to-shell-scripts
 for ARGUMENT in "$@"
 do
@@ -79,7 +81,7 @@ echo "add_neutral_class: ${add_neutral_class}"
 printf "\n"
 
 cd $ROOT
-source activate btools
+
 
 #################################################
 #       THE MAIN SCRIPT STARTS HERE             #
@@ -118,10 +120,10 @@ then
     labels_path="${modeldir}/vocabulary/labels.txt"
 
     echo "Processing and formatting the predictions. Output: ${out_file} ..."
-    if [ ${add_neutral_class} == 1 ]
-    then 
-        python3 src/models/process_predictions.py --in-path "${predfile}" --labels-vocab-path "${labels_path}" --out-path "${out_file}" --add-neutral-class
+    if [ ${add_neutral_class} == 1 ]; then 
+        python3 $ROOT/src/models/process_predictions.py --in-path "${predfile}" --labels-vocab-path "${labels_path}" --out-path "${out_file}" --add-neutral-class
     else
-        python3 src/models/process_predictions.py --in-path "${predfile}" --labels-vocab-path "${labels_path}" --out-path "${out_file}"
+        echo "python3 $ROOT/src/models/process_predictions.py --in-path \"${predfile}\" --labels-vocab-path \"${labels_path}\" --out-path \"${out_file}\""
+        python3 $ROOT/src/models/process_predictions.py --in-path "${predfile}" --labels-vocab-path "${labels_path}" --out-path "${out_file}"
     fi
 fi
