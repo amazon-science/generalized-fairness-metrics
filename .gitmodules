@@ -1,0 +1,3 @@
+[submodule "conversationai"]
+	path = conversationai
+	url = https://github.com/conversationai/unintended-ml-bias-analysis.git

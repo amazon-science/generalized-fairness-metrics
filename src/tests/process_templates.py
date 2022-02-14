@@ -4,7 +4,7 @@ from typing import List, Set
 from lemminflect import getInflection
 import regex as re
 
-from checklist_fork.checklist.editor import Editor
+from expanded_checklist.checklist.editor import Editor
 from collections import OrderedDict
 import pandas as pd
 
@@ -50,9 +50,6 @@ def get_templates(
                 polarity_phrases.append(row)
             else:
                 template_rows.append(row)
-
-        # if polarity_phrases:
-        #     add_polarity_phrases(template_rows, polarity_phrases)
 
     # make sure all keys are in the lexicon or in the identity keys provided
     # filter those sentences that have keys that are not in either
@@ -104,9 +101,10 @@ def process_all_keys(
         else:
             new_template_rows.append(row)
 
-    missed = len(template_rows) - len(new_template_rows)
-    logger.info(f"Ommited {missed} sentences.")
-    logger.info(f"Keys not in lexicon/not identity {missing_keys}.")
+    # missed = len(template_rows) - len(new_template_rows)
+    # logger.info(f"Ommited {missed} sentences out of {len(template_rows)}.")
+    if missing_keys:
+        logger.warning(f"Keys not in lexicon/not identity {missing_keys}.")
     return new_template_rows
 
 
@@ -163,53 +161,7 @@ def resolve_infl(
         template_rows.append(new_row)
 
 
-def add_polarity_phrases(
-    template_rows: List[OrderedDict],
-    polarity_phrases: List[str]
-) -> None:
-    # sents to which a polarity statement can be appended
-    neut_extendable_sents = []
-
-    # get extendable rows (after they've been expanded)
-    for row in template_rows:
-        if row['EXTENDABLE'] in [1, "1"]:
-            neut_extendable_sents.append(row)
-
-    for polarity_phrase in polarity_phrases:
-        for to_extend in neut_extendable_sents:
-            # copy all the new info that comes from the orginal row
-            # change polarity
-            new_row = to_extend.copy()
-            new_row["SENT"] = polarity_phrase["SENT"]
-            phrase = polarity_phrase["TEMPLATE"]
-            new_row["TEMPLATE"] =\
-                re.sub("{neut}", to_extend['TEMPLATE'].rstrip('.'), phrase)
-            template_rows.append(new_row)
-
 #########################################
-
-
-def get_df_for_domain(df: pd.DataFrame, domain: str = None) -> pd.DataFrame:
-    if domain == "all":
-        return df
-    if not domain:
-        return df[df['DOMAIN'] == '']
-    return df[df['DOMAIN'].str.match(f'(.*|)?{domain}(|.*)?')]
-
-
-# identity_np -> explicit identity, e.g. lesbian woman, an Italian gay etc.
-# identity_adj -> Italian, lesbian, trans, straight, white, black etc.
-# person -> name (Adam, Anna etc.) or np like 'my mum', this is used in
-#       contexts where the explicit identities are not very natural, e.g.
-#       I watched the movie with 'a white trans person'.
-# first_name -> for sentences where first name fits specifically
-def get_df_with_identity_slots(
-    df: pd.DataFrame,
-    slots: Set[str]
-) -> pd.DataFrame:
-    slots_str = '{' + '|'.join(slots) + '}'
-    return df[df['TEMPLATE'].str.match(f'.*({slots_str}).*')]
-
 
 def get_df_with_sent_class(df: pd.DataFrame, class_: str) -> pd.DataFrame:
     return filter_df(df, "SENT", class_)

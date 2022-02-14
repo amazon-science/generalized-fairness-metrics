@@ -100,7 +100,7 @@ class FlexibleReader(DatasetReader):
         else:
             # this reader can adjust to parsing different types of examples on
             # the fly (e.g. one example is in the SST format, one in SemEval
-            # etc.), but there some conditions:
+            # etc.), but there are some conditions:
             # (i) there has to be one example per line in the file
             # (ii) each line has to be marked with what reader to use on it
             # (ii) the reader has to implement a _read_line function
