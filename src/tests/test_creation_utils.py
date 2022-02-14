@@ -1,6 +1,6 @@
 from typing import List, Dict, Callable
-from checklist_fork.checklist.test_suite import TestSuite
-from checklist_fork.checklist.editor import Editor
+from expanded_checklist.checklist.test_suite import TestSuite
+from expanded_checklist.checklist.editor import Editor
 from munch import Munch
 import itertools
 from collections import OrderedDict, namedtuple
@@ -18,12 +18,12 @@ from src.models.readers.read_data import read_data
 import logging
 from datasets import load_dataset
 
-from checklist_fork.checklist.tests import INV, Wilcoxon, PairedTtest, \
+from expanded_checklist.checklist.tests import INV, Wilcoxon, PairedTtest, \
     PairedPermutation, Permutation, BasicClassificationMetrics, \
     EqualityDifference, SubgroupMetrics, CounterfactualGap, ProbDiffStats
 
 # use the same tokenization throughout the project
-from checklist_fork.checklist.utils import tokenize, expand_label
+from expanded_checklist.checklist.utils import tokenize, expand_label
 
 from copy import deepcopy
 
@@ -34,90 +34,13 @@ NamedRegex = namedtuple(
     'NamedRegex', ['basic', 'caps', 'abasic', 'acaps'])
 
 
-###############################
-#   EXPLICIT IDENTITIES       #
-###############################
-
-def create_identities(
-    editor: Editor,
-    basic: bool = True  # TODO: this parameter will control what terms are used
-) -> List[Munch]:
-    """
-    This function can be used to create more elaborate identities, by sampling
-    two different properties and then the values for those properties.
-    """
-    # TODO: change so that there is a number of terms that can be used
-    # to express a particular identity -- add metadata
-
-    protected_adjs = {
-        'ethnicity': editor.lexicons["dixon_ethnicity"],
-        # basic sexuality adjs from checklist + the basic ones from terms
-        'sexuality': list(set(editor.lexicons["sexual_adj"]).union(
-            set(editor.lexicons["sexuality_adj_basic"]))),
-        'religion': editor.lexicons["religion_adj"],
-        'nationality': [
-            x.capitalize() for x in editor.lexicons["nationality"]],
-        'gender': editor.lexicons["gender_adj_basic"]
-    }
-
-    protected_nouns = {
-        # basic sexuality noun from terms lists
-        'sexuality': editor.lexicons["sexuality_n_basic"],
-        'religion': editor.lexicons["religion_adj"],
-        'gender': editor.lexicons["gender_n_basic"]
-    }
-
-    identities: List[Munch] = []
-    property_combinations =\
-        list(itertools.combinations(protected_adjs.keys(), 2))
-
-    # sample two properties to be expressed: one expressed as an adjective and
-    # the other either as a noun or as a 'adj' + 'person'
-    for prop1, prop2 in property_combinations:
-        adj_vals1 = protected_adjs[prop1]
-        adj_vals2 = protected_adjs[prop2]
-
-        noun_vals2 = protected_nouns.setdefault(prop2, [])
-        noun_vals1 = protected_nouns.setdefault(prop1, [])
-
-        all_noun_vals1 = noun_vals1 + [f"{x} person" for x in adj_vals1]
-        all_noun_vals2 = noun_vals2 + [f"{x} person" for x in adj_vals2]
-
-        for val1, val2 in itertools.product(adj_vals1, all_noun_vals2):
-            identities.append(Munch({
-                'adj_prop': prop1,
-                'np_prop': prop2,
-                'adj': val1,
-                'np': val2
-            }))
-
-        # order matters -- it determines which property is expressed as a noun
-        # (we want to test different terms for different properties)
-        for val1, val2 in itertools.product(adj_vals2, all_noun_vals1):
-            identities.append(Munch({
-                'adj_prop': prop1,
-                'np_prop': prop2,
-                'adj': val1,
-                'np': val2
-            }))
-
-    nps = editor.template(
-        ['{a:identity.adj} {identity.np}',
-         '{a:identity.np}'],
-        unroll=True,
-        identity=identities,
-        remove_duplicates=True).data
-
-    all_identity_adjs = [x for k, v in protected_adjs.items() for x in v]
-    return nps, all_identity_adjs
-
-
 #############################
 #   TEMPLATE CREATION       #
 #############################
 
 def _get_entity_queue(entity_str):
     # TODO: adjust to different labeling schemes
+    # (for now only BIOUL is supported)
     entity_queue = entity_str.split('|')
 
     # [[person], B-PER]] [[last_name], L-PER]] etc.
@@ -129,8 +52,8 @@ def _get_entity_queue(entity_str):
     for e in entity_queue:
         surface_str, lab = e
 
-        # TODO: this is based on an assumption that the same 'fillers'
-        # are tokenised the same in and out of context
+        # TODO: for now, this is based on an assumption that the 'fillers'
+        # are tokenised in the same way in and out of context
         toks = tokenize(surface_str)
         if len(toks) > 1:
             new_labels = expand_label(lab, len(toks))
@@ -482,94 +405,3 @@ def get_grouped_data_from_template(
             meta.append(example_meta)
 
     return data, meta, labels_dict
-
-
-def get_all_classification_tests():
-    bm = BasicClassificationMetrics()
-    ed = EqualityDifference()
-
-    sm = SubgroupMetrics()
-
-    inv = INV()
-
-    cg = CounterfactualGap("all")
-    cg2 = CounterfactualGap("gold")
-    cg3 = CounterfactualGap("matrix")
-
-    sts = ProbDiffStats('all')
-    sts2 = ProbDiffStats('gold')
-    sts3 = ProbDiffStats('matrix')
-
-    sw = Wilcoxon()
-    spt = PairedTtest()
-    # spp = PairedPermutation()
-
-    return [bm, inv, ed, sm, cg, cg2, cg3, sts, sts2, sts3, sw, spt]
-
-
-###############################
-#   PERTURBATION WRAPPER      #
-###############################
-
-def add_cores_from_perturbation(
-    # a function that accepts parsed data and name of that data
-    create_core_function: Callable,
-    # labels are not used atm, but for sst the gran. determines if neutral
-    # examples are filtered out or not
-    dataset: str = 'sst-2',
-    suite: TestSuite = None
-) -> TestSuite:
-    if suite is None:
-        suite = TestSuite()
-    nlp = spacy.load('en_core_web_sm')
-
-    # sst and semeval have natural dev sets
-    if any(x in dataset for x in ["sst", "semeval"]):
-        dev_sents, dev_labels, _ = read_data(dataset, "dev")
-        test_sents, test_labels, _ = read_data(dataset, "test")
-        # train_sents, train_labels, _ = read_data(dataset, "train")
-        dev_test_sents = dev_sents + test_sents
-        dev_test_labels = dev_labels + test_labels
-
-        dev_test_parsed_data = list(nlp.pipe(dev_test_sents))
-        #train_parsed_data = list(nlp.pipe(train_sents))
-
-        dev_core = create_core_function(
-            dev_test_parsed_data, dev_test_labels,
-            f"Dev+Test {dataset}", task="SENT")
-        suite.add(dev_core)
-        # train_core = create_core_function(
-        #     train_parsed_data, train_labels, f"Train {dataset}")
-
-    # NOTE: rotten tomatoes is all lowercased
-    elif dataset in ["imdb", "rotten_tomatoes", "yelp_polarity"]:
-        data = load_dataset(dataset)
-        test_sents = data['test']['text']
-        test_labels = data['test']['label']
-
-        train_sents = data['train']['text']
-        train_labels = data['train']['label']
-
-        # filter out very long reviews
-        test_sents = [(test_labels[i], x) for i, x in enumerate(test_sents)
-                      if len(x.split(" ")) < 300]
-        train_sents = [(train_labels[i], x) for i, x in enumerate(train_sents)
-                       if len(x.split(" ")) < 300]
-
-        test_sents, test_labels = zip(*test_sents)
-        train_sents, train_labels = zip(*test_sents)
-
-        if dataset == "imdb":
-            test_sents = [re.sub("<br /><br />", " ", x) for x in test_sents]
-            train_sents = [re.sub("<br /><br />", " ", x) for x in train_sents]
-
-        test_parsed_data = list(nlp.pipe(test_sents))
-        #train_parsed_data = list(nlp.pipe(train_sents))
-
-        dev_core = create_core_function(
-            test_parsed_data, test_labels,
-            f"Test {dataset.replace('_', ' ')}", task="SENT")
-        suite.add(dev_core)
-        # train_core = create_core_function(
-        #     train_parsed_data, train_labels f"Train {dataset.replace('_', ' ')}")
-    return suite

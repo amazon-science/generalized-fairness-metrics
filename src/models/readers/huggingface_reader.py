@@ -77,7 +77,7 @@ class HuggingfaceReader(DatasetReader):
             tokens = [Token(t) for t in line.split(" ")]
         else:
             tokens = self._tokenizer.tokenize(line)
-        
+
         tokens = tokens[:cfg.max_position_embeddings]
 
         text_field = TextField(tokens, token_indexers=self._token_indexers)
