@@ -5,12 +5,12 @@ import src.tests.process_templates as tp
 from src.tests.test_creation_utils import get_grouped_data_from_template
 from src.tests.save_and_load import save_suite
 from src.tests.process_templates import get_templates
-from checklist_fork.checklist.editor import Editor
-from checklist_fork.checklist.test_suite import TestSuite
+from expanded_checklist.checklist.editor import Editor
+from expanded_checklist.checklist.test_suite import TestSuite
 
 from typing import Dict, List
-from checklist_fork.checklist.eval_core import EvaluationCore
-from src.tests.fill_the_lexicon import read_matched_terms, fill_the_lexicon
+from expanded_checklist.checklist.eval_core import EvaluationCore
+from src.tests.fill_the_lexicon import fill_the_lexicon
 from munch import Munch
 
 import src.config as cfg
@@ -52,7 +52,8 @@ def create_grouped_explicit_identity_suite(
 
             if group_keys is None:
                 group_keys = group2terms.keys()
-                logger.info(f"GROUP KEYS: {sorted(group_keys)}")
+                logger.info(
+                    f"\n{name} suite, group keys:\n{sorted(group_keys)}")
             # the evaluation code assumes exactly the same groups
             # per each example
             assert group_keys == group2terms.keys()
@@ -61,8 +62,6 @@ def create_grouped_explicit_identity_suite(
                 get_grouped_data_from_template(
                     editor=editor,
                     df_templates=df_templates,
-                    # get 10 different pairings of different groups
-                    # TODO: this should be changed, to avoid random pairings
                     nsamples=nsamples,
                     identity_key=slot,
                     groups=group2terms
@@ -81,6 +80,7 @@ def create_grouped_explicit_identity_suite(
     suite.add(ct)
 
     save_suite(suite, name)
+    logger.info(f"\nCreated suite: {name}, #sents: {len(full_data)}")
     return suite, name, full_data
 
 
@@ -160,7 +160,7 @@ def get_nationality_suite(
     country_groups = defaultdict(list)
 
     for group in df[group_key].unique():
-        if not group:
+        if not group or type(group) != str:
             continue
         agroup = df[df[group_key] == group]
         group = group.lower()
@@ -197,7 +197,7 @@ def get_religion_suite(editor, group_key="GROUP", nsamples=None, name=None):
     religion_groups = defaultdict(list)
 
     for group in df[group_key].unique():
-        if not group:
+        if not group or type(group) != str:
             continue
 
         agroup = df[df[group_key] == group]
@@ -239,7 +239,7 @@ def get_race_suite(editor, group_key="GROUP", nsamples=None, name=None):
     np_groups = defaultdict(list)
 
     for group in df[group_key].unique():
-        if not group:
+        if not group or type(group) != str:
             continue
 
         agroup = df[df[group_key] == group]
@@ -273,7 +273,7 @@ def get_age_suite(editor, group_key="GROUP", nsamples=None, name=None):
     np_groups = defaultdict(list)
 
     for group in df[group_key].unique():
-        if not group:
+        if not group or type(group) != str:
             continue
 
         agroup = df[df[group_key] == group]
@@ -307,7 +307,7 @@ def get_sexuality_suite(editor, group_key="GROUP", nsamples=None, name=None):
     adj_groups = defaultdict(list)
 
     for group in df[group_key].unique():
-        if not group:
+        if not group or type(group) != str:
             continue
 
         agroup = df[df[group_key] == group]
@@ -343,7 +343,7 @@ def get_gender_suite(editor, group_key="GROUP", nsamples=None, name=None):
     adj_groups = defaultdict(list)
 
     for group in df[group_key].unique():
-        if not group:
+        if not group or type(group) != str:
             continue
 
         agroup = df[df[group_key] == group]
@@ -403,7 +403,7 @@ def get_disability_suite(editor, group_key="GROUP", nsamples=None, name=None):
     pp_groups = defaultdict(list)
 
     for group in df[group_key].unique():
-        if not group:
+        if not group or type(group) != str:
             continue
 
         agroup = df[df[group_key] == group]

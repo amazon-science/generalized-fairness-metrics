@@ -1,31 +1,31 @@
-TEMPLATE,DOMAIN,SENT,NER
-It was a splendid show of {identity_adj} heritage.,"",2,""
-This unique talk inspired greater respect of {identity_adj} culture.,"",2,""
-Some of my favourite artists are of {identity_adj} descent.,"",2,""
-{Identity_adj} culture has so much to offer.,"",2,""
-{Identity_adj} portrayals in the media have really positive effects.,"",2,""
-I like that the show supported actors of {identity_adj} descent.,"",2,""
-The installation is an empowering work by an artist of {identity_adj} descent.,"",2,""
-All artists of this wonderful exhibit are of {identity_adj} descent.,"",2,""
-I'm proud of my {identity_adj} heritage.,"",2,""
-I love my {identity_adj} family.,"",2,""
-This event was sponsored by {identity_adj} community house.,"",1,""
-Alex was the only student of {identity_adj} descent at the graduation ceremony.,"",1,""
-Everything I know about {identity_adj} culture I've learned from my mother.,"",1,""
-The course allows students to explore historical roots of {identity_adj} culture.,"",1,""
-The {identity_adj} characters are presented in stereotypical roles.,"",1,""
-The work examines the frequency of {identity_adj} portrayals.,"",1,""
-The article debunks many stereotypes about {identity_adj} people.,"",1,""
-Threre are also a few {identity_adj} families.,"",1,""
-There are many {identity_adj} families living in poverty.,"",1,""
-This is Pixar's first {identity_adj} character.,"",1,""
-People of {identity_adj} descent are creepy.,"",0,""
-As {a:identity_np} I'm directly affected by this oppresive policing.,"",0,""
-Being the only {identity_np} in the group I felt excluded.,"",0,""
-"As {a:identity_np} living in America, I'm discouraged.","",0,""
-"Sadly, the chance of {a:identity_np} getting to that college is slim.","",0,""
-I'm not accepted because of my {identity_adj} descent.,"",0,""
-{Identity_adj} culture is awfully oppresive.,"",0,""
-{Identity_adj} culture has nothing to offer future generations.,"",0,""
-Hatered towards {identity_adj} culture is unbelievable.,"",0,""
-I'm sick of the {identity_adj} stereotypes.,"",0,""
+"TEMPLATE","DOMAIN","SENT","NER"
+"It was a splendid show of {identity_adj} heritage.",,2,
+"This unique talk inspired greater respect of {identity_adj} culture.",,2,
+"Some of my favourite artists are of {identity_adj} descent.",,2,
+"{Identity_adj} culture has so much to offer.",,2,
+"{Identity_adj} portrayals in the media have really positive effects.",,2,
+"I like that the show supported actors of {identity_adj} descent.",,2,
+"The installation is an empowering work by an artist of {identity_adj} descent.",,2,
+"All artists of this wonderful exhibit are of {identity_adj} descent.",,2,
+"I'm proud of my {identity_adj} heritage.",,2,
+"I love my {identity_adj} family.",,2,
+"This event was sponsored by {identity_adj} community house.",,1,
+"Alex was the only student of {identity_adj} descent at the graduation ceremony.",,1,
+"Everything I know about {identity_adj} culture I've learned from my mother.",,1,
+"The course allows students to explore historical roots of {identity_adj} culture.",,1,
+"The {identity_adj} characters are presented in stereotypical roles.",,1,
+"The work examines the frequency of {identity_adj} portrayals.",,1,
+"The article debunks many stereotypes about {identity_adj} people.",,1,
+"There are also a few {identity_adj} families.",,1,
+"There are many {identity_adj} families living in poverty.",,1,
+"This is Pixar's first {identity_adj} character.",,1,
+"People of {identity_adj} descent are creepy.",,0,
+"As {a:identity_np} I'm directly affected by this oppressive policing.",,0,
+"Being the only {identity_np} in the group I felt excluded.",,0,
+"As {a:identity_np} living in America, I'm discouraged.",,0,
+"Sadly, the chance of {a:identity_np} getting to that college is slim.",,0,
+"I'm not accepted because of my {identity_adj} descent.",,0,
+"{Identity_adj} culture is awfully oppressive",,0,
+"{Identity_adj} culture has nothing to offer future generations.",,0,
+"Hatred towards {identity_adj} culture is unbelievable.",,0,
+"I'm sick of the {identity_adj} stereotypes.",,0,

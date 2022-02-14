@@ -5,9 +5,9 @@ import dill
 import glob
 import os
 
-from checklist_fork.checklist.test_suite import TestSuite
-from checklist_fork.checklist.tests import get_all_tests
-from checklist_fork.checklist.graphs.graphs import plot_all_tests
+from expanded_checklist.checklist.test_suite import TestSuite
+from expanded_checklist.checklist.tests import get_all_tests
+from expanded_checklist.checklist.graphs.graphs import plot_all_tests
 
 import src.config as cfg
 import logging
@@ -35,7 +35,7 @@ def save_suite(
     logger.info(f"Saving test suite in {path}")
 
     # clean all samples for a suite with that name
-    to_rem = glob.glob(f"{cfg.ROOT}/predictions/samples-{name}-*.txt")
+    to_rem = glob.glob(f"{cfg.samples_path}/samples-{name}-*.txt")
 
     for i in range(len(to_rem)):
         x = to_rem[i]
@@ -44,7 +44,7 @@ def save_suite(
             samp = samp.group(1)
             for task in cfg.supported_tasks:
                 samp = samp.replace(f"-{task}", "")
-            to_rem += glob.glob(f"{cfg.ROOT}/predictions/*/preds-*-{samp}.txt")
+            to_rem += glob.glob(f"{cfg.predictions_path}/*/preds-*-{samp}.txt")
 
     logger.warning(
         f"Deleting existing samples/predictions for suite {name}!")
@@ -85,13 +85,16 @@ def load_results(core_name, model_name):
     return to_ret
 
 
-def load_and_plot(suite_name, model_name, cl, scaling=1, counterfactual=False):
-    if not os.path.exists(f'{cfg.ROOT}/plots'):
-        os.makedirs(f'{cfg.ROOT}/plots')
+def load_and_plot(
+        suite_name, model_name, cl, scaling=1,
+        counterfactual=False, plots_dir=f'{cfg.ROOT}/plots',
+        skip_group_pcms=True):
+    if not os.path.exists(plots_dir):
+        os.makedirs(plots_dir)
 
     result_dict = load_results(suite_name, model_name)
 
     return plot_all_tests(
         model_name, result_dict, suite_name,
-        out_dir=f'{cfg.ROOT}/plots', cl=cl, counterfactual=counterfactual,
-        scaling=scaling)
+        out_dir=plots_dir, cl=cl, counterfactual=counterfactual,
+        scaling=scaling, skip_group_pcms=skip_group_pcms)
