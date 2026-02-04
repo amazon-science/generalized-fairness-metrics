@@ -29,7 +29,7 @@
     "debug": "npx webpack-dev-server  --devtool eval --progress --colors --hot --content-base --inline"
   },
   "dependencies": {
-    "@jupyter-widgets/base": "^1.1 || ^2",
+    "@jupyter-widgets/base": "^6.0",
     "@types/lodash": "^4.14.141",
     "@types/react": "^16.9.9",
     "@types/react-dom": "^16.9.2",
